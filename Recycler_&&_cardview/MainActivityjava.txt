@@ -1,0 +1,88 @@
+package com.pooja.cardrecycler;
+
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+Toolbar toolbar;
+    FloatingActionButton fab;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+   private List<Eachrow> listitems;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        toolbar= (Toolbar) findViewById(R.id.toolbar_id);
+        setSupportActionBar(toolbar);
+
+        fab=(FloatingActionButton)findViewById(R.id.fab);
+        fab.setBackgroundTintList(ColorStateList.valueOf(Color
+                .parseColor("#33691E")));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"FAB",Toast.LENGTH_LONG).show();
+            }
+        });
+        recyclerView=(RecyclerView)findViewById(R.id.recycler_view);
+        //recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        listitems=new ArrayList<>();
+        Resources resources=this.getResources();
+        String []array=resources.getStringArray(R.array.android_names);
+        for(int i=0;i<array.length;i++)
+        {
+            listitems.add(new Eachrow(array[i]));
+        }
+        adapter=new myadapter(listitems,MainActivity.this);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_items_toolbar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.ADD:
+                Toast.makeText(MainActivity.this,"Add was clicked",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.Delete:
+                Toast.makeText(MainActivity.this,"Delete was clicked",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.search:
+                Toast.makeText(MainActivity.this,"Search was clicked",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.Settings:
+                Toast.makeText(MainActivity.this,"Settings was clicked",Toast.LENGTH_LONG).show();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

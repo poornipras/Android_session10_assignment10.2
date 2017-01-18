@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CardRecycler</string>
+    <string-array name="android_names">
+        <item>Alpha</item>
+        <item>Beta</item>
+        <item>Cupcake</item>
+        <item>Donut</item>
+        <item>Eclair</item>
+        <item>Froyo</item>
+        <item>Gingerbread</item>
+        <item>Honeycomb</item>
+        <item>IceCream Sandwich</item>
+        <item>Jelly Bean</item>
+        <item>Kitkat</item>
+        <item>Lollipop</item>
+        <item>Marshmello</item>
+        <item>Nougat</item>
+    </string-array>
+</resources>

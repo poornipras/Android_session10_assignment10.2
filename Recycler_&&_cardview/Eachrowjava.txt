@@ -1,0 +1,24 @@
+package com.pooja.cardrecycler;
+
+/**
+ * Created by Pooja on 1/17/2017.
+ */
+
+public class Eachrow
+{
+    String name_version;
+
+    public Eachrow(String name_version) {
+        this.name_version = name_version;
+
+    }
+    public String getName_version() {
+        return name_version;
+    }
+
+    public void setName_version(String name_version) {
+        this.name_version = name_version;
+    }
+
+
+}

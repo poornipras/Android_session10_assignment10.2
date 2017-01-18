@@ -1,0 +1,58 @@
+package com.pooja.cardrecycler;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Pooja on 1/17/2017.
+ */
+
+public class myadapter extends RecyclerView.Adapter<myadapter.ViewHolder> {
+
+    private List<Eachrow> eachrows;
+    private Context context;
+
+    public myadapter(List<Eachrow> eachrows, Context context) {
+        this.eachrows = eachrows;
+        this.context = context;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
+
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_items,parent,false);
+
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        Eachrow eachrow= eachrows.get(position);
+        holder.version_name.setText(eachrow.getName_version());
+    }
+
+    @Override
+    public int getItemCount() {
+        return eachrows.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public TextView version_name;
+        public ViewHolder(View itemView)
+        {
+            super(itemView);
+            version_name=(TextView)itemView.findViewById(R.id.textview_android_name);
+        }
+    }
+}
